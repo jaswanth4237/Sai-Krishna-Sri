@@ -836,6 +836,16 @@ textarea:focus {
     font-size: 14px;
 }
 
+.developer-credit {
+    margin-top: 8px;
+}
+
+.developer-credit span {
+    color: var(--accent);
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
 /* ==========================================================================
    ANIMATION REVEAL CLASSES
    ========================================================================== */
