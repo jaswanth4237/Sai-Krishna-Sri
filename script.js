@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const doctorWhatsApp = "83741 74548";
+    const doctorWhatsApp = "918374174548";
 
     // 1. Minimum Date Setup (Cannot select past dates)
     const dateInput = document.getElementById("date");
