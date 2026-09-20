@@ -1,4 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const doctorWhatsAppPromise = fetch(".env", { cache: "no-store" })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("The .env file could not be loaded.");
+            }
+            return response.text();
+        })
+        .then(envContents => {
+            const match = envContents.match(/^DOCTOR_WHATSAPP\s*=\s*(.+)$/m);
+            const digits = match ? match[1].replace(/\D/g, "") : "";
+
+            if (!digits) {
+                throw new Error("DOCTOR_WHATSAPP is missing from .env.");
+            }
+
+            return digits.length === 10 ? `91${digits}` : digits;
+        })
+        .catch(() => "918374174548");
+
     // 1. Minimum Date Setup (Cannot select past dates)
     const dateInput = document.getElementById("date");
     if (dateInput) {
@@ -55,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("appointmentForm");
 
     if (form) {
-        form.addEventListener("submit", function (e) {
+        form.addEventListener("submit", async function (e) {
             e.preventDefault();
 
             const name = document.getElementById("name").value.trim();
@@ -64,8 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const time = document.getElementById("time").value;
             const reason = document.getElementById("reason").value.trim() || "Routine Consultation";
 
-            // Replace with Doctor's WhatsApp Phone Number (with country code, e.g. 919999999999)
-            const doctorWhatsApp = "919999999999";
+            const doctorWhatsApp = await doctorWhatsAppPromise;
 
             // Format date nicely
             let formattedDate = date;
