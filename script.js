@@ -82,11 +82,11 @@ document.addEventListener("DOMContentLoaded", function () {
             // Construct formatted appointment message
             const message = `🏥 *APPOINTMENT REQUEST*
 
-👤 *Patient Name:* ${name}
-📞 *Phone Number:* ${phone}
-📅 *Preferred Date:* ${formattedDate}
-⏰ *Preferred Time:* ${time}
-📝 *Reason for Visit:* ${reason}
+ *Patient Name:* ${name}
+ *Phone Number:* ${phone}
+ *Preferred Date:* ${formattedDate}
+ *Preferred Time:* ${time}
+ *Reason for Visit:* ${reason}
 
 _Sent via Dr. Sai Krishna Sri Appointment Portal_`;
 
